@@ -129,7 +129,7 @@ export default async function Home() {
               <button className="flex justify-start items-center gap-4 py-2 px-4 btn btn-ghost">
                 <IconComment className="w-6 h-6" />
                 <span>
-                  <span>Comment</span>
+                  <span>Comments</span>
                   <span className="px-2"> ᛫ </span>
                   <span>4</span>
                 </span>
