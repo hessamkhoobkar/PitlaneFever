@@ -1,5 +1,4 @@
 import Sidebar from "@/app/components/Sidebar";
-import Userside from "@/app/components/Userside";
 
 export default function MainLayout({
   children,
@@ -7,8 +6,10 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-6xl mx-auto flex justify-start items-start gap-4 py-4">
-      <main className="w-8/12">{children}</main>
+    <div className="max-w-7xl mx-auto flex justify-start items-start gap-4 pt-11">
+      <main className="w-8/12 bg-neutral pe-4 rounded-tr-2xl body-card before:bg-neutral">
+        {children}
+      </main>
       <Sidebar />
     </div>
   );
