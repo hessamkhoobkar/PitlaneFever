@@ -36,7 +36,7 @@ export default async function SidebarStandings() {
   const topFiveDriver = fulldriverStandings.slice(0, 5);
 
   return (
-    <div className="w-full flex flex-col justify-start items-start gap-1 mt-4">
+    <div className="w-full flex flex-col justify-start items-start gap-1 mt-6">
       {topFiveDriver.map((driver: DriverStandings) =>
         driver.position === "1" ? (
           <div className="w-full" key={driver.Driver.driverId}>
@@ -50,7 +50,7 @@ export default async function SidebarStandings() {
       )}
       <Link
         href="/standings"
-        className="w-full flex justify-center items-center bg-neutral gap-4 p-4 rounded-b-2xl hover:text-primary hover:bg-neutral-focus transition-all duration-200 ease-in-out"
+        className="w-full flex justify-center items-center bg-neutral gap-4 p-4 rounded-b-2xl hover:text-primary hover:bg-neutral-focus transition-all duration-300 ease-in-out"
       >
         VIEW FULL STANDINGS
       </Link>

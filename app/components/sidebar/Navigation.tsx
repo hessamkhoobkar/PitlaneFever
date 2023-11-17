@@ -34,10 +34,10 @@ export default function SidebarNavigation() {
         <Link
           key={nav.title}
           href={nav.href}
-          className={`w-full flex justify-start items-center gap-4 p-3 rounded-3xl transition-all duration-500 ease-in-out text-write  ${
+          className={`w-full flex justify-start items-center gap-4 p-3 rounded-3xl transition-all duration-500 ease-in-out   ${
             pathname === nav.href
               ? "text-primary"
-              : "hover:text-white hover:gap-6"
+              : "text-write hover:text-white hover:gap-6"
           }`}
         >
           <span className="text-2xl">{nav.icon}</span>

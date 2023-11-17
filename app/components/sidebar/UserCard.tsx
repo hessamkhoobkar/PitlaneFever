@@ -42,13 +42,13 @@ export default async function UserCard() {
           </div>
 
           <Image
-            className="w-32 h-32 rounded-2xl ms-4 border-4 border-secondary absolute top-20"
+            className="w-28 h-28 rounded-2xl ms-4 border-4 border-neutral absolute top-24"
             width={128}
             height={128}
             src={currentUser.avatar_url}
             alt={currentUser.name}
           />
-          <div className="flex flex-col justify-start items-start gap-1 py-3 ms-40">
+          <div className="flex flex-col justify-start items-start gap-1 py-3 ms-36">
             <span>{currentUser.name}</span>
             <span className="text-write text-xs opacity-60">
               @{currentUser.username}

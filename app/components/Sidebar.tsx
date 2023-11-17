@@ -9,7 +9,7 @@ import PitlaneFeverLogo from "@/app/assets/images/pflogo.png";
 
 export default function Sidebar() {
   return (
-    <div className="w-4/12 flex flex-col justify-start items-start gap-4">
+    <div className="w-4/12 flex flex-col justify-start items-start gap-2 -mt-4">
       <Link href="/">
         <Image
           src={PitlaneFeverLogo}
