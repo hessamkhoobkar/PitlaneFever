@@ -1,3 +1,6 @@
+import Image from "next/image";
+import Link from "next/link";
+
 interface DriverStandings {
   position: string;
   positionText: string;
@@ -33,33 +36,76 @@ export default async function SidebarStandings() {
   const topFiveDriver = fulldriverStandings.slice(0, 5);
 
   return (
-    <div className="flex flex-col justify-start items-start gap-2 w-full">
-      {topFiveDriver.map((driver: DriverStandings) => (
-        <div
-          key={driver.Driver.driverId}
-          className="bg-secondary rounded-2xl p-4 w-full relative"
-        >
-          <span className="absolute top-1 -left-1 text-sm font-black opacity-40">
-            {driver.position}
-          </span>
-          <div className="flex justify-start items-center w-full">
-            <span className="text-xl font-bold">
-              {driver.Driver.givenName} {driver.Driver.familyName}
-            </span>
-            <span className="ms-auto">
-              <span className="text-sm me-2 opacity-30">points:</span>
-              <span>{driver.points}</span>
-            </span>
+    <div className="w-full flex flex-col justify-start items-start gap-1 mt-4">
+      {topFiveDriver.map((driver: DriverStandings) =>
+        driver.position === "1" ? (
+          <div className="w-full" key={driver.Driver.driverId}>
+            <DriverCardChamp {...driver} />
           </div>
-          <div className="flex justify-start items-center w-full">
-            <span>{driver.Constructors[0].name}</span>
-            <span className="ms-auto">
-              <span className="text-sm me-2 opacity-30">wins: </span>
-              <span>{driver.Driver.permanentNumber}</span>
-            </span>
+        ) : (
+          <div className="w-full" key={driver.Driver.driverId}>
+            <DriverCard {...driver} />
           </div>
-        </div>
-      ))}
+        )
+      )}
+      <Link
+        href="/standings"
+        className="w-full flex justify-center items-center bg-neutral gap-4 p-4 rounded-b-2xl hover:text-primary hover:bg-neutral-focus transition-all duration-200 ease-in-out"
+      >
+        VIEW FULL STANDINGS
+      </Link>
+    </div>
+  );
+}
+
+async function DriverCard(driver: DriverStandings) {
+  return (
+    <div className="w-full flex justify-start items-center bg-neutral gap-4 px-3">
+      <Image
+        src={`/drivers/${driver.Driver.driverId}.webp`}
+        width={70}
+        height={70}
+        alt={`${driver.Driver.givenName} ${driver.Driver.familyName}`}
+        className=""
+      />
+      <div className="flex flex-col justify-start items-start">
+        <span className="font-normal text-lg">
+          {driver.Driver.givenName} {driver.Driver.familyName}
+        </span>
+        <span className="text-xs text-write">
+          {driver.Constructors[0].name}
+        </span>
+      </div>
+      <div className="flex flex-col justify-start items-start ms-auto">
+        <span className="font-normal text-lg">{driver.points}</span>
+        <span className="text-xs text-write">Points</span>
+      </div>
+    </div>
+  );
+}
+
+async function DriverCardChamp(driver: DriverStandings) {
+  return (
+    <div className="w-full h-24 flex justify-start items-center bg-neutral gap-4 px-3 rounded-t-2xl">
+      <Image
+        src={`/drivers/${driver.Driver.driverId}.webp`}
+        width={120}
+        height={120}
+        alt={`${driver.Driver.givenName} ${driver.Driver.familyName}`}
+        className="-mt-6"
+      />
+      <div className="flex flex-col justify-start items-start">
+        <span className="font-normal text-lg">
+          {driver.Driver.givenName} {driver.Driver.familyName}
+        </span>
+        <span className="text-xs text-write">
+          {driver.Constructors[0].name}
+        </span>
+      </div>
+      <div className="flex flex-col justify-start items-start ms-auto">
+        <span className="font-normal text-lg">{driver.points}</span>
+        <span className="text-xs text-write">Points</span>
+      </div>
     </div>
   );
 }
