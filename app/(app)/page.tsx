@@ -15,7 +15,7 @@ export default async function Home() {
 
   return (
     <>
-      <form className="w-full">
+      {/* <form className="w-full">
         <div className="w-full mb-4 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600">
           <div className="px-4 py-2 bg-white rounded-t-lg dark:bg-secondary">
             <label htmlFor="comment" className="sr-only">
@@ -90,20 +90,22 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </form>
+      </form> */}
       {/* 
       / Feed
       /
       */}
-      <div className="flex flex-col justify-start items-start w-full gap-4">
-        {posts?.map((post) => (
+      <div className="flex flex-col justify-start items-start w-full gap-1 -mt-4">
+        {posts?.map((post, index) => (
           <div
             key={post.id}
-            className="border-t border-white border-opacity-10 w-full p-4 pb-0 pt-6 flex flex-col justify-start items-start gap-4"
+            className={`w-full p-6 bg-secondary flex flex-col justify-start items-start gap-4 ${
+              index === 0 ? "rounded-t-2xl" : ""
+            }`}
           >
             <div className="flex justify-start items-start gap-6">
               <img
-                className="w-16 h-16 rounded-full"
+                className="w-16 h-16 rounded-2xl"
                 src={post.profiles.avatar_url}
                 alt={`${post.profiles.name} avatar`}
               />
