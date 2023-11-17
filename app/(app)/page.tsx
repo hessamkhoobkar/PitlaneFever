@@ -65,3 +65,17 @@ export default async function Home() {
     </div>
   );
 }
+
+// update posting cards || maybe a new name too
+// update post cards
+// make siderbar sticky
+// post new posts
+// add the edit and delete option for user's card
+
+// Add likeing option
+// Add commenting option
+
+// Add users view (users profile)
+// Add user profile view
+
+// Add standing pages

@@ -14,7 +14,7 @@ export default async function PostCard() {
 
   if (!user) {
     return null;
-    // I should redirect to login page
+    // TODO: I should redirect to login page
   }
 
   const { data: profile } = await supabase
@@ -24,7 +24,7 @@ export default async function PostCard() {
 
   if (!profile) {
     return null;
-    // I should write error for failed user fetch
+    // TODO: I should write error for failed user fetch
   }
 
   const currentUser = profile && profile[0];
