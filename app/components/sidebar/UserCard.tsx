@@ -1,7 +1,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-export default async function Userside() {
+export default async function UserCard() {
   const cookieStore = cookies();
   const supabase = createServerComponentClient({ cookies: () => cookieStore });
   const {
@@ -25,7 +25,6 @@ export default async function Userside() {
         <span>{profile[0].username}</span>
         <span className="text-xs opacity-40">{profile[0].name}</span>
       </div>
-      <span className="text-sm p-2 mt-4">{profile[0].description}</span>
     </div>
   );
 }
