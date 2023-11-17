@@ -6,7 +6,7 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="max-w-7xl mx-auto flex justify-start items-start gap-4 pt-11">
+    <div className="w-full max-w-7xl mx-auto flex justify-start items-start gap-4 pt-11 text-base tracking-normal">
       <main className="w-8/12 bg-neutral pe-4 rounded-tr-2xl body-card before:bg-neutral">
         {children}
       </main>
