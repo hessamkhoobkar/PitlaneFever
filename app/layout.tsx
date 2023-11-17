@@ -1,8 +1,26 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const monasans = localFont({
+  src: [
+    {
+      path: "./assets/fonts/MonaSans-Medium.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/MonaSans-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./assets/fonts/MonaSans-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Pitlane Fever",
@@ -16,7 +34,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} min-h-screen bg-base-100`}>
+      <body className={`${monasans.className} min-h-screen bg-base-100`}>
         {children}
       </body>
     </html>
