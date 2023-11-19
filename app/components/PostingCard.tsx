@@ -91,17 +91,18 @@ export default function PostingCard() {
             />
           </div>
           <div className="flex flex-col justify-start items-start grow gap-1">
-            <div className="flex justify-start items-center gap-2">
+            <div className="flex justify-start items-center gap-2 ps-2">
               <span>{currentUser.name}</span>
               <span className="text-write text-xs opacity-60">
                 @{currentUser.username}
               </span>
             </div>
             <textarea
-              className="bg-secondary w-full rounded-2xl p-2 hover:bg-neutral focus:bg-neutral focus:ring-0 focus:outline-none"
+              className="bg-secondary w-full rounded-2xl p-2 hover:bg-neutral focus:bg-neutral focus:ring-0 focus:outline-none placeholder:text-write placeholder:text-opacity-50"
               name="post"
               id="post"
               rows={4}
+              placeholder="Share your thought"
               value={newPost}
               onChange={(e) => setNewPost(e.target.value)}
             />
