@@ -1,65 +1,50 @@
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import Image from "next/image";
-import { Paperclip } from "../assets/icons/Paperclip";
+import { HeartOutline } from "@/app/assets/icons/HeartOutline";
+import { HeartBold } from "@/app/assets/icons/HeartBold";
+import { ChatRoundOutline } from "@/app/assets/icons/ChatRoundOutline";
 
-export default async function PostCard() {
-  const cookieStore = cookies();
-  const supabase = createServerComponentClient<Database>({
-    cookies: () => cookieStore,
-  });
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return null;
-    // TODO: I should redirect to login page
-  }
-
-  const { data: profile } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("user_connect", user.id);
-
-  if (!profile) {
-    return null;
-    // TODO: I should write error for failed user fetch
-  }
-
-  const currentUser = profile && profile[0];
-
+export default function PostCard({
+  post,
+  index,
+}: {
+  post: any;
+  index: number;
+}) {
   return (
-    <div className="w-full rounded-2xl bg-secondary flex justify-start items-start gap-8 p-6 pb-2">
-      <div>
+    <div
+      className={`w-full p-6 pb-4 bg-secondary flex flex-col justify-start items-start gap-4 ${
+        index === 0 ? "rounded-t-2xl" : ""
+      }`}
+    >
+      <div className="flex justify-start items-start gap-6">
         <Image
           className="w-16 h-16 rounded-2xl"
           width={64}
           height={64}
-          src={currentUser.avatar_url}
-          alt={currentUser.name}
+          src={post.profiles.avatar_url}
+          alt={`${post.profiles.name} avatar`}
         />
-      </div>
-      <div className="flex flex-col justify-start items-start grow gap-1">
-        <div className="flex justify-start items-center gap-2">
-          <span>{currentUser.name}</span>
-          <span className="text-write text-xs opacity-60">
-            @{currentUser.username}
-          </span>
-        </div>
-        <textarea
-          className="bg-secondary w-full rounded-2xl p-2 hover:bg-neutral focus:bg-neutral focus:ring-0 focus:outline-none"
-          name="post"
-          id="post"
-          rows={4}
-        />
-        <div className="w-full flex justify-between items-center">
-          <button className="btn btn-circle btn-ghost text-lg -ms-6">
-            <Paperclip />
-          </button>
-          <button className="btn text-primary bg-secondary border-secondary">
-            Post
-          </button>
+
+        <div className="flex flex-col justify-start items-start gap-2">
+          <div className="flex justify-start items-baseline gap-2">
+            <span>@{post.profiles.name}</span>
+            <span className="text-write text-sm opacity-60">
+              {post.profiles.username}
+            </span>
+          </div>
+          <p className="text-base font-medium">{post.post}</p>
+          <div className="flex justify-start items-center gap-5">
+            <button className="btn btn-circle text-write bg-secondary border-transparent hover:border-transparent hover:text-primary hover:bg-primary hover:bg-opacity-5 text-xl">
+              <HeartOutline />
+            </button>
+            <span className="text-write text-sm">128</span>
+            <div className="flex justify-start items-center gap-5">
+              <button className="btn btn-circle text-write bg-secondary border-transparent hover:border-transparent hover:text-white hover:bg-white hover:bg-opacity-5 text-xl">
+                <ChatRoundOutline />
+              </button>
+              <span className="text-write text-sm">57</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
